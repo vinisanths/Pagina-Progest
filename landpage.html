@@ -1,0 +1,584 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROGEST - Gestão da Qualidade</title>
+    <style>
+        /* Estilos gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .destaque{
+            font-size: 30px;
+        }
+        .destaque2{
+            color:#333;
+            font-size: 25px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            color: #333;
+            background-color: #f0f0f0;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: normal;
+        }
+
+        p {
+            line-height: 1.5;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        /* Estilos do cabeçalho */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+
+        .header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header .logo {
+            width: 200px;
+            height: 50px;
+        }
+
+        .header .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .header .menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .header .menu li {
+            margin-left: 20px;
+        }
+
+        .header .menu li a {
+            display: block;
+            padding: 10px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .header .menu li a:hover {
+            color: #0099ff;
+        }
+
+        .header .menu li a.active {
+            color: #0099ff;
+        }
+
+        .header .contact {
+            display: block;
+            padding: 10px 20px;
+            background-color: #0099ff;
+            color: #fff;
+            font-weight: bold;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .header .contact:hover {
+            background-color: #0077cc;
+        }
+
+        /* Estilos da seção de introdução */
+        .intro {
+            height: 100vh;
+            background-image: url("https://images.pexels.com/photos/3183190/pexels-photo-3183190.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+        }
+
+        .intro .container {
+            text-align: center;
+        }
+
+        .intro h1 {
+            font-size: 48px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .intro h2 {
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 40px;
+        }
+
+        .intro .action {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #0099ff;
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 30px;
+            transition: background-color 0.3s;
+        }
+
+        .intro .action:hover {
+            background-color: #0077cc;
+        }
+
+        /* Estilos da seção de benefícios */
+        .benefits {
+            background-color: #fff;
+        }
+
+        .benefits .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 40px;
+        }
+
+        .benefits .item {
+            display: flex;
+            align-items: center;
+        }
+
+        .benefits .item-icon {
+            width: 80px;
+            height: 80px;
+            margin-right: 20px;
+        }
+
+        .benefits .item-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .benefits .item-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .benefits .item-text {
+            font-size: 16px;
+        }
+
+        /* Estilos da seção de serviços */
+        .services {
+            background-color: #f0f0f0;
+        }
+
+        .services .container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 40px;
+        }
+
+        .services .item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .services .item:hover {
+            transform: scale(1.05);
+        }
+
+        .services .item-image {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 20px;
+        }
+
+        .services .item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .services .item-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .services .item-text {
+            font-size: 16px;
+            text-align: center;
+        }
+
+        /* Estilos do rodapé */
+        .footer {
+            background-color: #0099ff;
+            color: #fff;
+        }
+
+        .footer .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .footer .info {
+            display: flex;
+            align-items: center;
+        }
+
+        .footer .info-logo {
+            width: 150px;
+            height: 40px;
+            margin-right: 20px;
+        }
+
+        .footer .info-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .footer .info-text {
+            font-size: 14px;
+        }
+
+        .footer .social {
+            display: flex;
+            list-style: none;
+        }
+
+        .footer .social li {
+            margin-left: 20px;
+        }
+
+        .footer .social li a {
+            display: block;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: #0099ff;
+            font-size: 24px;
+            line-height: 40px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid black;
+        }
+    .apresentacao__links__link{
+    /* background-color: #22D4FD; */
+    justify-content: center;
+    gap: 16px;
+    width: 378 px;
+    display: flex;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 24px;
+    font-weight: 600;
+    padding: 21.5px 0;
+    text-decoration: none;
+    color: #f6f6f6;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 15px;
+ 
+}
+
+        /* .footer .social li a:hover {
+            background-color: #0077cc;
+            color: black;
+            transform: rotate(360deg);
+        }*/
+
+        /* Estilos para telas menores que 768px */
+        @media screen and (max-width: 768px) {
+            .header .menu {
+                display: none;
+            }
+
+            .intro {
+                height: 80vh;
+            }
+
+            .intro h1 {
+                font-size: 36px;
+            }
+
+            .intro h2 {font-size: 18px;
+                          }
+
+                          .benefits .container {
+                              grid-template-columns: repeat(1, 1fr);
+                          }
+
+                          .services .container {
+                              grid-template-columns: repeat(2, 1fr);
+                          }
+
+                          .footer .container {
+                              flex-direction: column;
+                              text-align: center;
+                          }
+
+                          .footer .info {
+                              margin-bottom: 20px;
+                          }
+                      }
+
+                      /* Estilos para telas menores que 480px */
+                      @media screen and (max-width: 480px) {
+                          .intro h1 {
+                              font-size: 24px;
+                          }
+
+                          .intro h2 {
+                              font-size: 16px;
+                          }
+
+                          .intro .action {
+                              font-size: 14px;
+                          }
+
+                          .benefits .item-icon {
+                              width: 60px;
+                              height: 60px;
+                          }
+
+                          .benefits .item-title {
+                              font-size: 16px;
+                          }
+
+                          .benefits .item-text {
+                              font-size: 14px;
+                          }
+
+                          .services .item-image {
+                              width: 150px;
+                              height: 150px;
+                          }
+
+                          .services .item-title {
+                              font-size: 16px;
+                          }
+
+                          .services .item-text {
+                              font-size: 14px;
+                          }
+
+                          .footer .info-logo {
+                              width: 100px;
+                              height: 30px;
+                          }
+
+                          .footer .info-text {
+                              font-size: 12px;
+                          }
+
+                          .footer .social li a {
+                              width: 30px;
+                              height: 30px;
+                              font-size: 18px;
+                              line-height: 30px;
+                          }
+                      }
+                  </style>
+              </head>
+              <body>
+                  <!-- Cabeçalho -->
+                  <div class="header">
+                      <div class="container">
+                          <div class="logo">
+                              <img src="logo.jpeg" alt="PROGEST">
+                          </div>
+                          <ul class="menu">
+                              <li><a href="#intro" class="active">Início</a></li>
+                              <li><a href="#benefits">Benefícios</a></li>
+                              <li><a href="#services">Serviços</a></li>
+                          </ul>
+                          <a href="#contact" class="contact">Contato</a>
+                      </div>
+                  </div>
+
+                  <!-- Seção de introdução -->
+                  <div class="section intro" id="intro">
+                      <div class="container">
+                          <h1>PROGEST</h1>
+                          <h2><strong class="destaque">A sua empresa de gestão da qualidade</strong></h2>
+                          <!--<h3><strong class="destaque2"> Nós Fazemos o seu Negocio crescer</strong></h3>-->                         
+                          <a href="#contact" class="action">Saiba mais</a>
+                      </div>
+                  </div>
+
+                  <!-- Seção de benefícios -->
+                  <div class="section benefits" id="benefits">
+                      <div class="container">
+                          <div class="item">
+                              <div class="item-content">
+                                  <h3 class="item-title">Qualidade da equipe profissional</h3>
+                                  <p class="item-text">Contamos com uma equipe de profissionais qualificados e experientes em gestão da qualidade, que oferecem soluções personalizadas para cada cliente.</p>
+                              </div>
+                          </div>
+                          <div class="item">
+                              <div class="item-content">
+                                  <h3 class="item-title">Metodologia</h3>
+                                  <p class="item-text">Utilizamos uma metodologia baseada nas melhores práticas e normas internacionais de gestão da qualidade, como ISO 9001, ISO 14001, ISO 45001, entre outras.</p>
+                              </div>
+                          </div>
+                          <div class="item">
+                              <div class="item-content">
+                                  <h3 class="item-title">Resultados</h3>
+                                  <p class="item-text">Garantimos resultados efetivos e duradouros para a sua empresa, como melhoria dos processos, redução de custos, aumento da satisfação dos clientes e colaboradores, e obtenção de certificações.</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- Seção de serviços -->
+                  <div class="section services" id="services">
+                      <div class="container">
+                          <div class="item">
+                              <div class="item-image">
+                                  <img src="consultoria.jpg" alt="Consultoria">
+                              </div>
+                              <h3 class="item-title">Consultoria</h3>
+                              <p class="item-text">Oferecemos consultoria em gestão da qualidade, auxiliando a sua empresa a implementar, manter e melhorar o seu sistema de gestão da qualidade, de acordo com os requisitos das normas aplicáveis.</p>
+                          </div>
+                          <div class="item">
+                              <div class="item-image">
+                                  <img src="certificacao.jpg" alt="Preparação para certificações ISO">
+                              </div>
+                              <h3 class="item-title">Preparação para certificações ISO</h3>
+                              <p class="item-text">Preparamos a sua empresa para obter as certificações ISO que você deseja, como ISO 9001 (qualidade), ISO 14001 (meio ambiente), ISO 45001 (segurança e saúde ocupacional), entre outras.</p>
+                          </div>
+                          <div class="item">
+                              <div class="item-image">
+                                  <img src="auditoria.jpg" alt="Auditoria">
+                              </div>
+                              <h3 class="item-title">Auditoria</h3>
+                              <p class="item-text">Realizamos auditorias internas e externas em gestão da qualidade, verificando a conformidade do seu sistema de gestão da qualidade com os requisitos das normas e identificando oportunidades de melhoria.</p>
+                          </div>
+                          <div class="item">
+                              <div class="item-image">
+                                  <img src="treinamento.jpg" alt="Treinamento">
+                              </div>
+                              <h3 class="item-title">Treinamento</h3>
+                              <p class="item-text">Ministramos treinamentos em gestão da qualidade, capacitando os seus colaboradores em temas como interpretação das normas, ferramentas da qualidade, gestão de processos, gestão de riscos, entre outros.</p>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- Rodapé -->
+                  <div class="section footer" id="contact">
+                      <div class="container">
+                          <div class="info">
+                              <div class="info-logo">
+                                  <img src="logo.jpeg" alt="PROGEST">
+                              </div>
+                              <div class="info-text">
+                                  <p>PROGEST - Gestão da Qualidade</p>
+                                  <p>R. Complexo Esportivo, nº 30, Bairro Centro, 65485000</p>
+                                  <p>Telefone: (98) 2218-1655 </p>
+                                  <p>E-mail: progestconsult.qualidade@gmail.com</p>
+                              </div>
+                          </div>
+                          <ul class="social">
+                              <!--<li><a img src="facebook_3670032.png" 
+                                href=""><i class="fab fa-facebook-f"></i></a></li>-->
+                                <a class="apresentacao__links__link" href="https://www.facebook.com/progestconsultoria">
+                                    <img src="facebook_3670032.png"> 
+                                    Facebook
+                                </a>
+                              <!-- <li><a href="https://www.instagram.com/progestconsultoria/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                              <li><a href="" target="_blank"><i class="fab fa-twitter"></i></a></li> -->
+                              <a class="apresentacao__links__link" href="https://www.linkedin.com/company/progest">
+                                <img src="linkedin_145807.png"> 
+                                Linkedin
+                            </a>
+                            <a class="apresentacao__links__link" href="https://www.instagram.com/progestconsultoria/">
+                                <img src="instagram_3955024.png"> 
+                                Instagram
+                            </a>
+                          </ul>
+                      </div>
+                  </div>
+
+                  <!-- Script para adicionar interatividade -->
+                  <script>
+                      // Selecionar os elementos do menu e do cabeçalho
+                      const menuItems = document.querySelectorAll(".header .menu li a");
+                      const header = document.querySelector(".header");
+
+                      // Função para adicionar a classe active ao item do menu correspondente à seção visível na tela
+                      function activateMenu() {
+                          // Obter a posição vertical da janela
+                          let windowTop = window.pageYOffset;
+
+                          // Percorrer os itens do menu
+                          for (let item of menuItems) {
+                              // Obter o id da seção referenciada pelo item do menu
+                              let sectionId = item.getAttribute("href");
+                              // Selecionar a seção correspondente
+                              let section = document.querySelector(sectionId);
+                              // Obter a posição vertical da seção
+                              let sectionTop = section.offsetTop;
+                              // Obter a altura da seção
+                              let sectionHeight = section.offsetHeight;
+                              // Verificar se a posição da janela está dentro do intervalo da seção
+                            if (windowTop >= sectionTop && windowTop < sectionTop + sectionHeight) {
+                              // Adicionar a classe active ao item do menu
+                              item.classList.add("active");
+                            } else {
+                              // Remover a classe active do item do menu
+                              item.classList.remove("active");
+                            }
+                            }
+
+                            // Verificar se a posição da janela está no topo da página
+                            if (windowTop == 0) {
+                            // Remover a sombra do cabeçalho
+                            header.classList.remove("shadow");
+                            } else {
+                            // Adicionar a sombra ao cabeçalho
+                            header.classList.add("shadow");
+                            }
+                            }
+
+                            // Adicionar um evento de scroll à janela
+                            window.addEventListener("scroll", activateMenu);
+                            </script>
+                            </body>
+</html>
